@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVOLQ - AI That Fills Your Empty Slots Automatically</title>
+    <meta name="description" content="AI-powered automation for Kerala salons and clinics. Fill empty appointment slots automatically. Built for Indian businesses.">
+    
+    <link rel="stylesheet" href="nexus.css">
+    
+    <!-- Premium Fonts: Apple-style Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon"><i class="bi bi-lightning-charge-fill"></i></span>
+                    <span class="logo-text">REVOLQ</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#solution">Solution</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#results">Results</a>
+                    <a href="#cta" class="btn-primary-small">Start Free Trial</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#solution">Solution</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#results">Results</a>
+        <a href="#cta" class="btn-primary">Start Free Trial</a>
+    </div>
+
+    <!-- ========== HERO SECTION: Split Layout with Live Chat Demo ========== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left: Text Content -->
+                <div class="hero-text" data-aos="fade-right">
+                    <div class="hero-badge">
+                        <span class="badge-icon">🇮🇳</span>
+                        Built for Kerala Businesses
+                    </div>
+                    <h1 class="hero-title">
+                        Your Salon is Losing<br>
+                        <span class="highlight">₹80,000/Month.</span><br>
+                        We'll Get It Back—Automatically.
+                    </h1>
+                    <p class="hero-subtitle">
+                        AI that finds customers, books appointments, and fills your empty slots.<br>
+                        <strong>No receptionist needed.</strong> Malayalam + UPI supported.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#cta" class="btn-primary btn-large">
+                            Show Me How It Works
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <span class="hero-cta-note">
+                            <i class="bi bi-check-circle-fill"></i>
+                            Free for 14 days • No credit card required
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right: Animated Chat Mockup (Agensy-style "Living Demo") -->
+                <div class="hero-demo" data-aos="fade-left" data-aos-delay="200">
+                    <div class="chat-mockup">
+                        <div class="chat-header">
+                            <div class="chat-avatar">AI</div>
+                            <div class="chat-info">
+                                <div class="chat-name">REVOLQ Assistant</div>
+                                <div class="chat-status">
+                                    <span class="status-dot"></span>
+                                    Active now
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <!-- Messages will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROBLEM SECTION: Dark Mode ========== -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                You're Working 12 Hours a Day.<br>
+                Your Business Isn't Growing.
+            </h2>
+            <div class="problem-grid">
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="problem-icon">
+                        <i class="bi bi-phone-vibrate"></i>
+                    </div>
+                    <h3>You're Glued to WhatsApp</h3>
+                    <p>Even during a bridal makeup session, you're checking if the 6 PM slot is confirmed.</p>
+                </div>
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="problem-icon">
+                        <i class="bi bi-calendar-x"></i>
+                    </div>
+                    <h3>Empty Slots = Lost Money</h3>
+                    <p>Every empty chair is ₹2,000 gone. That's ₹60,000/month you'll never see again.</p>
+                </div>
+                <div class="problem-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="problem-icon">
+                        <i class="bi bi-person-exclamation"></i>
+                    </div>
+                    <h3>Staff Forgets. Customers Cancel.</h3>
+                    <p>You sent a reminder at 10 AM. The client still didn't show up at 3 PM.</p>
+                </div>
+            </div>
+            <p class="problem-closer" data-aos="fade-up" data-aos-delay="400">
+                What if your business ran itself—even when you're asleep?
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== SOLUTION SECTION: Interactive Slider ========== -->
+    <section class="solution-section" id="solution">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Meet REVOLQ: Your AI Business Partner</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                The only automation that makes you money, not just saves time.
+            </p>
+
+            <!-- Interactive Use Cases Slider (Agensy-style) -->
+            <div class="slider-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="slider-wrapper" id="useCaseSlider">
+                    <!-- Slide 1 -->
+                    <div class="slider-slide active">
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <div class="slide-badge">Use Case 1</div>
+                                <h3>Instant Bookings (24/7)</h3>
+                                <p>Customer says "I want a facial tomorrow at 4 PM." AI checks your calendar, books it, sends payment link. Done in 30 seconds.</p>
+                                <div class="slide-stats">
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="30">0</div>
+                                        <div class="stat-label">Seconds to Book</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="100">0</div>
+                                        <div class="stat-label">% Automated</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-visual">
+                                <div class="mockup-phone">
+                                    <div class="phone-screen">
+                                        <div class="chat-bubble customer">Hi, I need a facial tomorrow at 4 PM</div>
+                                        <div class="chat-bubble ai">Perfect! I can book you with Anjali. That's ₹1,500. Confirm?</div>
+                                        <div class="chat-bubble customer">Yes please!</div>
+                                        <div class="chat-bubble ai">✅ Booked! Payment link: pay.revolq.in/xyz</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slider-slide">
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <div class="slide-badge">Use Case 2</div>
+                                <h3>Smart Slot-Filling</h3>
+                                <p>AI finds your empty Friday 3 PM slot. Texts 5 customers: "Anjali has a rare opening!" First to reply gets it.</p>
+                                <div class="slide-stats">
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="92">0</div>
+                                        <div class="stat-label">% Reply Rate</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="18">0</div>
+                                        <div class="stat-label">Slots Filled/Month</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-visual">
+                                <div class="mockup-phone">
+                                    <div class="phone-screen">
+                                        <div class="chat-bubble ai">Hi Priya! Anjali has a rare Friday 3 PM opening. Want it?</div>
+                                        <div class="chat-bubble customer">Yes! Book me 🙋‍♀️</div>
+                                        <div class="chat-bubble ai">✅ Confirmed! See you Friday at 3 PM.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slider-slide">
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <div class="slide-badge">Use Case 3</div>
+                                <h3>Never Miss Revenue</h3>
+                                <p>Our AI filled 18 empty slots for Zara Beauty Lounge last month. That's ₹36,000 they would've lost.</p>
+                                <div class="slide-stats">
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="36">0</div>
+                                        <div class="stat-label">₹ Thousands Saved</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="4">0</div>
+                                        <div class="stat-label">Hours/Day Saved</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-visual">
+                                <div class="dashboard-mockup">
+                                    <div class="dashboard-header">This Month's Revenue</div>
+                                    <div class="revenue-chart">
+                                        <div class="chart-bar" style="height: 60%">
+                                            <span class="bar-label">Week 1<br>₹12K</span>
+                                        </div>
+                                        <div class="chart-bar" style="height: 80%">
+                                            <span class="bar-label">Week 2<br>₹18K</span>
+                                        </div>
+                                        <div class="chart-bar" style="height: 90%">
+                                            <span class="bar-label">Week 3<br>₹22K</span>
+                                        </div>
+                                        <div class="chart-bar active" style="height: 100%">
+                                            <span class="bar-label">Week 4<br>₹36K</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="slider-controls">
+                    <button class="slider-btn prev" id="prevSlide" aria-label="Previous slide">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-btn next" id="nextSlide" aria-label="Next slide">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Flow Diagram -->
+            <div class="flow-diagram" data-aos="fade-up" data-aos-delay="300">
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="bi bi-whatsapp"></i></div>
+                    <p>Customer WhatsApps</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="bi bi-robot"></i></div>
+                    <p>AI Books Instantly</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="bi bi-calendar-check"></i></div>
+                    <p>Slot Filled</p>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="bi bi-currency-rupee"></i></div>
+                    <p>You Get Paid</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROOF SECTION: Real Results ========== -->
+    <section class="proof-section" id="results">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Real Kerala Businesses. Real Results.</h2>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-image">
+                    <div class="avatar">AM</div>
+                </div>
+                <div class="testimonial-content">
+                    <p class="testimonial-quote">"REVOLQ filled 23 slots in 2 weeks. I didn't touch my phone once."</p>
+                    <p class="testimonial-author">— Anjali Menon, Glow Studio, Kochi</p>
+                    <div class="testimonial-results">
+                        <div class="result-item">
+                            <strong class="counter" data-count="46000">0</strong>
+                            <span>Extra Revenue</span>
+                        </div>
+                        <div class="result-item">
+                            <strong class="counter" data-count="4">0</strong>
+                            <span>Hours/Day Saved</span>
+                        </div>
+                        <div class="result-item">
+                            <strong class="counter" data-count="92">0</strong>
+                            <span>% Reply Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social-proof" data-aos="fade-up" data-aos-delay="200">
+                <p>Join <strong>12 Kerala businesses</strong> already using REVOLQ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section class="how-section" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">3 Steps to Automate Your Business</h2>
+            <div class="steps-grid">
+                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">1</div>
+                    <h3>We Set It Up (1 Day)</h3>
+                    <p>Give us your service menu and staff WhatsApp numbers. We handle the rest.</p>
+                </div>
+                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">2</div>
+                    <h3>Your AI Goes Live (24/7)</h3>
+                    <p>Customers text. AI books. Staff gets alerts. Payments happen automatically.</p>
+                </div>
+                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">3</div>
+                    <h3>You Watch Revenue Grow</h3>
+                    <p>Check your dashboard every Monday. See how many slots AI filled while you were off.</p>
+                </div>
+            </div>
+            <div class="cta-center" data-aos="fade-up" data-aos-delay="400">
+                <a href="#cta" class="btn-primary btn-large">
+                    Start Free Trial
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING SECTION ========== -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Cheaper Than Hiring a Receptionist</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                A receptionist costs ₹15,000/month. Our AI works 24/7 for less.
+            </p>
+            <div class="pricing-grid">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Starter</h3>
+                    <div class="price">
+                        <span class="currency">₹</span>
+                        <span class="amount">1,499</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="features-list">
+                        <li>✓ AI booking bot (WhatsApp/Telegram)</li>
+                        <li>✓ Staff alerts</li>
+                        <li>✓ Payment links (Razorpay/UPI)</li>
+                        <li>✓ Basic reminders</li>
+                        <li>✓ 1 location</li>
+                    </ul>
+                    <p class="best-for">Best for: Small salons</p>
+                    <a href="#cta" class="btn-secondary">Get Started</a>
+                </div>
+                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Growth</h3>
+                    <div class="price">
+                        <span class="currency">₹</span>
+                        <span class="amount">2,999</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="features-list">
+                        <li>✓ Everything in Starter</li>
+                        <li>✓ Owner dashboard</li>
+                        <li>✓ Analytics & reports</li>
+                        <li>✓ Client history</li>
+                        <li>✓ Review management</li>
+                        <li>✓ Up to 3 locations</li>
+                    </ul>
+                    <p class="best-for">Best for: Growing clinics</p>
+                    <a href="#cta" class="btn-primary">Get Started</a>
+                </div>
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Revenue</h3>
+                    <div class="price">
+                        <span class="currency">₹</span>
+                        <span class="amount">1,999</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <div class="price-extra">+ 8% of AI-generated bookings</div>
+                    <ul class="features-list">
+                        <li>✓ Everything in Growth</li>
+                        <li>✓ <strong>Proactive slot-filling AI</strong></li>
+                        <li>✓ Smart customer targeting</li>
+                        <li>✓ Dynamic pricing suggestions</li>
+                        <li>✓ Priority support</li>
+                        <li>✓ Unlimited locations</li>
+                    </ul>
+                    <p class="best-for">Best for: Premium salons</p>
+                    <a href="#cta" class="btn-secondary">Get Started</a>
+                </div>
+            </div>
+            <div class="pricing-note" data-aos="fade-up" data-aos-delay="400">
+                <p>💡 <strong>Revenue Plan Example:</strong> If we fill 15 slots/month (₹30,000 revenue), you pay us ₹2,400 extra. But you made ₹30,000 you would've lost. That's <strong>₹27,600 profit</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Common Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Will my customers accept a bot?</h3>
+                    <p>Your customers already chat with bots on Zomato and Swiggy. Ours speaks Malayalam and sounds human. Most customers don't even realize it's AI.</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>What if the AI makes a mistake?</h3>
+                    <p>Every booking is confirmed by your staff via WhatsApp. You have full control. The AI suggests, you approve.</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <h3>I'm not tech-savvy. Is this complicated?</h3>
+                    <p>If you can use WhatsApp, you can use REVOLQ. We set up everything for you in 1 day. No coding required.</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Does it work with my existing systems?</h3>
+                    <p>Yes. We integrate with Google Calendar, Razorpay, WhatsApp, Instagram, and Telegram. Your staff doesn't need to learn new tools.</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>What happens after the free trial?</h3>
+                    <p>After 14 days, choose a plan or cancel. No contract. No hidden fees. Cancel anytime.</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Can I customize the messages?</h3>
+                    <p>Absolutely. You control the tone, language (English/Malayalam/Hindi), and message templates. Your brand, your voice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FINAL CTA ========== -->
+    <section class="final-cta" id="cta">
+        <div class="container" data-aos="fade-in">
+            <h2 class="cta-title">Start Filling Empty Slots This Week</h2>
+            <p class="cta-subtitle">
+                Join 12 Kerala businesses already using REVOLQ.<br>
+                Free for 14 days. No credit card. Cancel anytime.
+            </p>
+            
+            <form class="cta-form" id="ctaForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="tel" name="phone" placeholder="WhatsApp Number" required>
+                <input type="text" name="business" placeholder="Business Name" required>
+                <select name="type" required>
+                    <option value="">Business Type</option>
+                    <option value="salon">Salon</option>
+                    <option value="clinic">Clinic/Hospital</option>
+                    <option value="spa">Spa/Wellness</option>
+                    <option value="institute">Educational Institute</option>
+                    <option value="other">Other</option>
+                </select>
+                <button type="submit" class="btn-primary btn-large">
+                    Start Free Trial
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+            </form>
+            <p class="cta-trust">
+                <i class="bi bi-shield-check"></i>
+                Built in Kerala, for Kerala businesses. Malayalam + UPI supported.
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon"><i class="bi bi-lightning-charge-fill"></i></span>
+                        <span class="logo-text">REVOLQ</span>
+                    </div>
+                    <p>AI-powered automation for service businesses.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#results">Case Studies</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy Policy</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <p>📧 hello@revolq.in</p>
+                    <p>📱 +91 7995617374</p>
+                    <p>📍 Kochi, Kerala</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 REVOLQ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+    <script src="nexus.js"></script>
+</body>
+</html>
