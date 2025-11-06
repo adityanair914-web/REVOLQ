@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVOLQ - AI That Fills Your Empty Slots Automatically</title>
+    <meta name="description" content="AI-powered automation for Kerala salons and clinics. Fill empty appointment slots automatically. Built for Indian businesses.">
+    
+    <!-- HIGH-END TYPOGRAPHY -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="genai.css">
+</head>
+<body>
+    <!-- ========================================
+         LOADING SCREEN WITH MATH ANIMATION
+    ======================================== -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-container">
+            <div class="loader-ring"></div>
+            <div class="loader-ring loader-ring-2"></div>
+            <div class="loader-text">
+                <span class="loader-letter">R</span>
+                <span class="loader-letter">E</span>
+                <span class="loader-letter">V</span>
+                <span class="loader-letter">O</span>
+                <span class="loader-letter">L</span>
+                <span class="loader-letter">Q</span>
+            </div>
+        </div>
+        <div class="loading-particles" id="loadingParticles"></div>
+    </div>
+
+    <!-- ========================================
+         CUSTOM CURSOR (REACTIVE)
+    ======================================== -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- ========================================
+         SCROLL PROGRESS INDICATOR
+    ======================================== -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ========================================
+         GEOMETRIC BACKGROUND LAYERS
+    ======================================== -->
+    <canvas id="geometryCanvas" class="geometry-canvas"></canvas>
+    <div class="gradient-orbs">
+        <div class="orb orb-1" data-speed="0.02"></div>
+        <div class="orb orb-2" data-speed="0.03"></div>
+        <div class="orb orb-3" data-speed="0.025"></div>
+    </div>
+    <div class="grid-overlay"></div>
+
+    <!-- ========================================
+         NAVIGATION (GLASSMORPHISM)
+    ======================================== -->
+    <nav class="navbar" id="navbar" data-scroll-trigger>
+        <div class="nav-blur"></div>
+        <div class="container">
+            <div class="nav-content">
+                <!-- Logo with Animation Container -->
+                <a href="#" class="logo" data-magnetic>
+                    <span class="logo-icon">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                        <span class="logo-glow"></span>
+                    </span>
+                    <span class="logo-text">
+                        <span class="logo-letter">R</span>
+                        <span class="logo-letter">E</span>
+                        <span class="logo-letter">V</span>
+                        <span class="logo-letter">O</span>
+                        <span class="logo-letter">L</span>
+                        <span class="logo-letter">Q</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-links">
+                    <a href="#solution" class="nav-link" data-magnetic>
+                        <span class="nav-link-text">Solution</span>
+                        <span class="nav-link-line"></span>
+                    </a>
+                    <a href="#how-it-works" class="nav-link" data-magnetic>
+                        <span class="nav-link-text">How It Works</span>
+                        <span class="nav-link-line"></span>
+                    </a>
+                    <a href="#pricing" class="nav-link" data-magnetic>
+                        <span class="nav-link-text">Pricing</span>
+                        <span class="nav-link-line"></span>
+                    </a>
+                    <a href="#results" class="nav-link" data-magnetic>
+                        <span class="nav-link-text">Results</span>
+                        <span class="nav-link-line"></span>
+                    </a>
+                    <a href="#cta" class="btn-nav" data-magnetic data-ripple>
+                        <span class="btn-text">Start Free Trial</span>
+                        <span class="btn-shine"></span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" data-magnetic>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-blur"></div>
+        <div class="mobile-menu-content">
+            <a href="#solution" class="mobile-link">
+                <span class="mobile-link-number">01</span>
+                <span class="mobile-link-text">Solution</span>
+            </a>
+            <a href="#how-it-works" class="mobile-link">
+                <span class="mobile-link-number">02</span>
+                <span class="mobile-link-text">How It Works</span>
+            </a>
+            <a href="#pricing" class="mobile-link">
+                <span class="mobile-link-number">03</span>
+                <span class="mobile-link-text">Pricing</span>
+            </a>
+            <a href="#results" class="mobile-link">
+                <span class="mobile-link-number">04</span>
+                <span class="mobile-link-text">Results</span>
+            </a>
+            <a href="#cta" class="btn-mobile">
+                Start Free Trial
+            </a>
+        </div>
+        <div class="mobile-menu-shapes"></div>
+    </div>
+
+    <!-- ========================================
+         HERO SECTION (MATH-GENERATED UNIVERSE)
+    ======================================== -->
+    <section class="hero" id="hero">
+        <!-- Animated Background Elements -->
+        <div class="hero-bg">
+            <canvas id="heroCanvas" class="hero-canvas"></canvas>
+            <div class="hero-gradient"></div>
+            <div class="hero-noise"></div>
+        </div>
+
+        <!-- Floating Geometric Shapes -->
+        <div class="floating-shapes">
+            <div class="shape shape-square" data-float data-rotate></div>
+            <div class="shape shape-circle" data-float data-pulse></div>
+            <div class="shape shape-triangle" data-float data-rotate></div>
+            <div class="shape shape-hexagon" data-float data-rotate></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left: Text Content -->
+                <div class="hero-text" data-scroll-reveal>
+                    <!-- Animated Badge -->
+                    <div class="hero-badge" data-float>
+                        <span class="badge-icon">🇮🇳</span>
+                        <span class="badge-text">Built for Kerala Businesses</span>
+                        <span class="badge-glow"></span>
+                    </div>
+
+                    <!-- Title with Word Animation -->
+                    <h1 class="hero-title display-font">
+                        <div class="title-line" data-word-reveal>
+                            <span class="word">Your</span>
+                            <span class="word">Business</span>
+                            <span class="word">is</span>
+                            <span class="word">Losing</span>
+                        </div>
+                        <div class="title-line" data-word-reveal data-delay="0.2">
+                            <span class="word gradient-text">₹80,000/Month.</span>
+                        </div>
+                        <div class="title-line" data-word-reveal data-delay="0.4">
+                            <span class="word">We'll</span>
+                            <span class="word">Get</span>
+                            <span class="word">It</span>
+                            <span class="word">Back—</span>
+                        </div>
+                        <div class="title-line" data-word-reveal data-delay="0.6">
+                            <span class="word gradient-text">Automatically.</span>
+                        </div>
+                    </h1>
+
+                    <!-- Subtitle with Typing Effect -->
+                    <p class="hero-subtitle" data-scroll-reveal data-delay="0.8">
+                        AI that finds customers, books appointments, and fills your empty slots.<br>
+                        <strong>No receptionist needed.</strong> Malayalam + UPI supported.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="hero-cta" data-scroll-reveal data-delay="1">
+                        <a href="#cta" class="btn btn-primary btn-large" data-magnetic data-ripple>
+                            <span class="btn-text">Show Me How It Works</span>
+                            <span class="btn-icon"><i class="bi bi-arrow-right"></i></span>
+                            <span class="btn-shine"></span>
+                        </a>
+                        <div class="hero-cta-note">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Free for 14 days • No credit card required</span>
+                        </div>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="trust-badges" data-scroll-reveal data-delay="1.2">
+                        <div class="trust-item">
+                            <i class="bi bi-shield-check"></i>
+                            <span>Bank-Grade Security</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="bi bi-lightning-charge"></i>
+                            <span>Setup in 24 Hours</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="bi bi-people"></i>
+                            <span>12+ Kerala Businesses</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Animated Chat Mockup -->
+                <div class="hero-demo" data-scroll-reveal data-delay="0.4">
+                    <div class="mockup-wrapper" data-tilt>
+                        <div class="chat-mockup">
+                            <!-- Mockup Header -->
+                            <div class="chat-header">
+                                <div class="chat-avatar" data-pulse>
+                                    <span>AI</span>
+                                    <div class="avatar-ring"></div>
+                                </div>
+                                <div class="chat-info">
+                                    <div class="chat-name">REVOLQ Assistant</div>
+                                    <div class="chat-status">
+                                        <span class="status-dot" data-pulse></span>
+                                        <span>Active now</span>
+                                    </div>
+                                </div>
+                                <div class="chat-actions">
+                                    <button class="chat-action" data-magnetic>
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Messages Container -->
+                            <div class="chat-messages" id="chatMessages">
+                                <!-- Messages inserted by JS -->
+                            </div>
+
+                            <!-- Input Field -->
+                            <div class="chat-input">
+                                <input type="text" placeholder="Type a message..." readonly>
+                                <button data-magnetic>
+                                    <i class="bi bi-send-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Mockup Glow Effects -->
+                        <div class="mockup-glow mockup-glow-1"></div>
+                        <div class="mockup-glow mockup-glow-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" data-bounce>
+            <div class="scroll-icon">
+                <i class="bi bi-mouse"></i>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PROBLEM SECTION (DARK MODE)
+    ======================================== -->
+    <section class="problem-section section-dark" id="problem">
+        <!-- Section Background -->
+        <div class="section-bg">
+            <div class="section-gradient"></div>
+            <div class="section-orb section-orb-1"></div>
+            <div class="section-orb section-orb-2"></div>
+        </div>
+
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header" data-scroll-reveal>
+                <h2 class="section-title display-font">
+                    <span class="title-word">You're</span>
+                    <span class="title-word">Working</span>
+                    <span class="title-word gradient-text">12</span>
+                    <span class="title-word">Hours</span>
+                    <span class="title-word">a</span>
+                    <span class="title-word">Day.</span>
+                </h2>
+                <p class="section-subtitle">
+                    Your Business Isn't Growing.
+                </p>
+            </div>
+
+            <!-- Problem Cards Grid -->
+            <div class="problem-grid">
+                <div class="problem-card" data-scroll-reveal data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-shine"></div>
+                    
+                    <div class="problem-icon" data-float>
+                        <i class="bi bi-phone-vibrate"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    
+                    <h3 class="card-title">You're Glued to WhatsApp</h3>
+                    <p class="card-desc">Even during a bridal makeup session, you're checking if the 6 PM slot is confirmed.</p>
+                    
+                    <div class="card-number">01</div>
+                </div>
+
+                <div class="problem-card" data-scroll-reveal data-delay="0.2" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-shine"></div>
+                    
+                    <div class="problem-icon" data-float>
+                        <i class="bi bi-calendar-x"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    
+                    <h3 class="card-title">Empty Slots = Lost Money</h3>
+                    <p class="card-desc">Every empty chair is ₹2,000 gone. That's ₹60,000/month you'll never see again.</p>
+                    
+                    <div class="card-number">02</div>
+                </div>
+
+                <div class="problem-card" data-scroll-reveal data-delay="0.4" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-shine"></div>
+                    
+                    <div class="problem-icon" data-float>
+                        <i class="bi bi-person-exclamation"></i>
+                        <div class="icon-bg"></div>
+                    </div>
+                    
+                    <h3 class="card-title">Staff Forgets. Customers Cancel.</h3>
+                    <p class="card-desc">You sent a reminder at 10 AM. The client still didn't show up at 3 PM.</p>
+                    
+                    <div class="card-number">03</div>
+                </div>
+            </div>
+
+            <!-- Problem Closer -->
+            <div class="problem-closer" data-scroll-reveal data-delay="0.6">
+                <p class="closer-text serif-elegant">
+                    What if your business ran itself—even when you're asleep?
+                </p>
+                <div class="closer-arrow" data-bounce>
+                    <i class="bi bi-arrow-down"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SOLUTION SECTION (INTERACTIVE SLIDER)
+    ======================================== -->
+    <section class="solution-section section-light" id="solution">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header" data-scroll-reveal>
+                <h2 class="section-title display-font">
+                    <span class="title-word">Meet</span>
+                    <span class="title-word gradient-text">REVOLQ:</span>
+                    <span class="title-word">Your</span>
+                    <span class="title-word">AI</span>
+                    <span class="title-word">Business</span>
+                    <span class="title-word">Partner</span>
+                </h2>
+                <p class="section-subtitle">
+                    The only automation that makes you money, not just saves time.
+                </p>
+            </div>
+
+            <!-- Interactive Slider -->
+            <div class="slider-container" data-scroll-reveal data-delay="0.2">
+                <div class="slider-wrapper" id="useCaseSlider">
+                    <!-- Slide 1: Instant Bookings -->
+                    <div class="slider-slide active" data-slide="1">
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <div class="slide-badge">
+                                    <span>Use Case</span>
+                                    <span class="badge-number">01</span>
+                                </div>
+                                
+                                <h3 class="slide-title">Instant Bookings (24/7)</h3>
+                                
+                                <p class="slide-desc">Customer says "I want a facial tomorrow at 4 PM." AI checks your calendar, books it, sends payment link. Done in 30 seconds.</p>
+                                
+                                <div class="slide-stats">
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="30">0</div>
+                                        <div class="stat-label">Seconds to Book</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="100">0</div>
+                                        <div class="stat-label">% Automated</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slide-visual">
+                                <div class="phone-mockup" data-float>
+                                    <div class="phone-frame">
+                                        <div class="phone-notch"></div>
+                                        <div class="phone-screen">
+                                            <div class="chat-bubble bubble-customer" data-chat-animate>
+                                                Hi, I need a facial tomorrow at 4 PM
+                                            </div>
+                                            <div class="chat-bubble bubble-ai" data-chat-animate>
+                                                Perfect! I can book you with Anjali. That's ₹1,500. Confirm?
+                                            </div>
+                                            <div class="chat-bubble bubble-customer" data-chat-animate>
+                                                Yes please!
+                                            </div>
+                                            <div class="chat-bubble bubble-ai" data-chat-animate>
+                                                ✅ Booked! Payment link: pay.revolq.in/xyz
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-glow"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Smart Slot Filling -->
+                    <div class="slider-slide" data-slide="2">
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <div class="slide-badge">
+                                    <span>Use Case</span>
+                                    <span class="badge-number">02</span>
+                                </div>
+                                
+                                <h3 class="slide-title">Smart Slot-Filling</h3>
+                                
+                                <p class="slide-desc">AI finds your empty Friday 3 PM slot. Texts 5 customers: "Anjali has a rare opening!" First to reply gets it.</p>
+                                
+                                <div class="slide-stats">
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="92">0</div>
+                                        <div class="stat-label">% Reply Rate</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="18">0</div>
+                                        <div class="stat-label">Slots Filled/Month</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slide-visual">
+                                <div class="phone-mockup" data-float>
+                                    <div class="phone-frame">
+                                        <div class="phone-notch"></div>
+                                        <div class="phone-screen">
+                                            <div class="chat-bubble bubble-ai" data-chat-animate>
+                                                Hi Priya! Anjali has a rare Friday 3 PM opening. Want it?
+                                            </div>
+                                            <div class="chat-bubble bubble-customer" data-chat-animate>
+                                                Yes! Book me 🙋‍♀️
+                                            </div>
+                                            <div class="chat-bubble bubble-ai" data-chat-animate>
+                                                ✅ Confirmed! See you Friday at 3 PM.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="phone-glow"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Revenue Impact -->
+                    <div class="slider-slide" data-slide="3">
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <div class="slide-badge">
+                                    <span>Use Case</span>
+                                    <span class="badge-number">03</span>
+                                </div>
+                                
+                                <h3 class="slide-title">Never Miss Revenue</h3>
+                                
+                                <p class="slide-desc">Our AI filled 18 empty slots for Zara Beauty Lounge last month. That's ₹36,000 they would've lost.</p>
+                                
+                                <div class="slide-stats">
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="36">0</div>
+                                        <div class="stat-label">₹ Thousands Saved</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-count="4">0</div>
+                                        <div class="stat-label">Hours/Day Saved</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slide-visual">
+                                <div class="dashboard-mockup" data-float>
+                                    <div class="dashboard-header">
+                                        <h4>This Month's Revenue</h4>
+                                        <span class="dashboard-trend">📈 +240%</span>
+                                    </div>
+                                    <div class="revenue-chart">
+                                        <div class="chart-bar" style="height: 60%" data-bar-grow>
+                                            <span class="bar-label">Week 1<br>₹12K</span>
+                                            <div class="bar-fill"></div>
+                                        </div>
+                                        <div class="chart-bar" style="height: 80%" data-bar-grow data-delay="0.2">
+                                            <span class="bar-label">Week 2<br>₹18K</span>
+                                            <div class="bar-fill"></div>
+                                        </div>
+                                        <div class="chart-bar" style="height: 90%" data-bar-grow data-delay="0.4">
+                                            <span class="bar-label">Week 3<br>₹22K</span>
+                                            <div class="bar-fill"></div>
+                                        </div>
+                                        <div class="chart-bar active" style="height: 100%" data-bar-grow data-delay="0.6">
+                                            <span class="bar-label">Week 4<br>₹36K</span>
+                                            <div class="bar-fill"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="slider-controls">
+                    <button class="slider-btn slider-prev" id="prevSlide" data-magnetic>
+                        <i class="bi bi-chevron-left"></i>
+                        <div class="btn-ripple"></div>
+                    </button>
+                    
+                    <div class="slider-dots" id="sliderDots">
+                        <!-- Dots inserted by JS -->
+                    </div>
+                    
+                    <button class="slider-btn slider-next" id="nextSlide" data-magnetic>
+                        <i class="bi bi-chevron-right"></i>
+                        <div class="btn-ripple"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Flow Diagram -->
+            <div class="flow-diagram" data-scroll-reveal data-delay="0.4">
+                <div class="flow-step" data-flow-animate data-tilt>
+                    <div class="flow-icon">
+                        <i class="bi bi-whatsapp"></i>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    <p>Customer WhatsApps</p>
+                </div>
+
+                <div class="flow-arrow" data-flow-arrow>
+                    <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="10" x2="100" y2="10" stroke="currentColor" stroke-width="2"/>
+                        <polygon points="90,5 100,10 90,15" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <div class="flow-step" data-flow-animate data-delay="0.2" data-tilt>
+                    <div class="flow-icon">
+                        <i class="bi bi-robot"></i>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    <p>AI Books Instantly</p>
+                </div>
+
+                <div class="flow-arrow" data-flow-arrow>
+                    <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="10" x2="100" y2="10" stroke="currentColor" stroke-width="2"/>
+                        <polygon points="90,5 100,10 90,15" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <div class="flow-step" data-flow-animate data-delay="0.4" data-tilt>
+                    <div class="flow-icon">
+                        <i class="bi bi-calendar-check"></i>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    <p>Slot Filled</p>
+                </div>
+
+                <div class="flow-arrow" data-flow-arrow>
+                    <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="0" y1="10" x2="100" y2="10" stroke="currentColor" stroke-width="2"/>
+                        <polygon points="90,5 100,10 90,15" fill="currentColor"/>
+                    </svg>
+                </div>
+
+                <div class="flow-step" data-flow-animate data-delay="0.6" data-tilt>
+                    <div class="flow-icon">
+                        <i class="bi bi-currency-rupee"></i>
+                        <div class="icon-pulse"></div>
+                    </div>
+                    <p>You Get Paid</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CIRCULAR MENU SECTION (SYNCHRONIZED STYLE)
+    ======================================== -->
+    <section class="circular-section section-dark">
+        <div class="container">
+            <div class="section-header" data-scroll-reveal>
+                <h2 class="section-title display-font">
+                    <span class="title-word">Everything</span>
+                    <span class="title-word">You</span>
+                    <span class="title-word gradient-text">Need</span>
+                </h2>
+            </div>
+
+            <div class="circular-menu" data-scroll-reveal data-delay="0.2">
+                <div class="menu-center" data-pulse>
+                    <div class="center-icon">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                    </div>
+                    <div class="center-text">REVOLQ</div>
+                    <div class="center-ring"></div>
+                </div>
+
+                <div class="menu-orbit">
+                    <div class="menu-item" data-orbit data-delay="0">
+                        <i class="bi bi-clock-history"></i>
+                        <span>24/7 Booking AI</span>
+                    </div>
+                    <div class="menu-item" data-orbit data-delay="5">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        <span>Smart Slot Filling</span>
+                    </div>
+                    <div class="menu-item" data-orbit data-delay="10">
+                        <i class="bi bi-credit-card"></i>
+                        <span>Auto Payments</span>
+                    </div>
+                    <div class="menu-item" data-orbit data-delay="15">
+                        <i class="bi bi-translate"></i>
+                        <span>Malayalam Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PROOF SECTION (TESTIMONIALS)
+    ======================================== -->
+    <section class="proof-section section-light" id="results">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header" data-scroll-reveal>
+                <h2 class="section-title display-font">
+                    <span class="title-word">Real</span>
+                    <span class="title-word">Kerala</span>
+                    <span class="title-word">Businesses.</span>
+                    <span class="title-word gradient-text">Real</span>
+                    <span class="title-word gradient-text">Results.</span>
+                </h2>
+            </div>
+
+            <!-- Testimonial Card -->
+            <div class="testimonial-card" data-scroll-reveal data-delay="0.2" data-tilt>
+                <div class="testimonial-bg">
+                    <div class="testimonial-image-bg"></div>
+                    <div class="testimonial-overlay"></div>
+                </div>
+
+                <div class="testimonial-content">
+                    <div class="testimonial-avatar" data-float>
+                        <div class="avatar-inner">AM</div>
+                        <div class="avatar-ring"></div>
+                        <div class="avatar-glow"></div>
+                    </div>
+
+                    <div class="testimonial-text">
+                        <div class="quote-icon">
+                            <i class="bi bi-quote"></i>
+                        </div>
+                        
+                        <p class="testimonial-quote serif-elegant">
+                            "REVOLQ filled 23 slots in 2 weeks. I didn't touch my phone once."
+                        </p>
+                        
+                        <div class="testimonial-author">
+                            <span class="author-name">Anjali Menon</span>
+                            <span class="author-role">Glow Studio, Kochi</span>
+                        </div>
+
+                        <div class="testimonial-stats">
+                            <div class="stat-item">
+                                <div class="stat-number counter" data-count="46000">₹0</div>
+                                <div class="stat-label">Extra Revenue</div>
+                                <div class="stat-bar"></div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number counter" data-count="4">0</div>
+                                <div class="stat-label">Hours/Day Saved</div>
+                                <div class="stat-bar"></div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number counter" data-count="92">0</div>
+                                <div class="stat-label">% Reply Rate</div>
+                                <div class="stat-bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="social-proof" data-scroll-reveal data-delay="0.4">
+                <div class="proof-avatars">
+                    <div class="proof-avatar" data-float></div>
+                    <div class="proof-avatar" data-float data-delay="0.1"></div>
+                    <div class="proof-avatar" data-float data-delay="0.2"></div>
+                    <div class="proof-avatar proof-avatar-more" data-float data-delay="0.3">+9</div>
+                </div>
+                <p class="proof-text">
+                    Join <strong>12 Kerala businesses</strong> already using REVOLQ
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         HOW IT WORKS (3 STEPS)
+    ======================================== -->
+    <section class="how-section section-dark" id="how-it-works">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header" data-scroll-reveal>
+                <h2 class="section-title display-font">
+                    <span class="title-word gradient-text">3</span>
+                    <span class="title-word">Steps</span>
+                    <span class="title-word">to</span>
+                    <span class="title-word">Automate</span>
+                    <span class="title-word">Your</span>
+                    <span class="title-word">Business</span>
+                </h2>
+            </div>
+
+            <!-- Steps Grid -->
+            <div class="steps-grid">
+                <div class="step-card" data-scroll-reveal data-tilt>
+                    <div class="step-number" data-float>
+                        <span>1</span>
+                        <div class="number-ring"></div>
+                    </div>
+                    
+                    <div class="step-icon">
+                        <i class="bi bi-gear-fill"></i>
+                        <div class="icon-orbit"></div>
+                    </div>
+                    
+                    <h3 class="step-title">We Set It Up (1 Day)</h3>
+                    <p class="step-desc">Give us your service menu and staff WhatsApp numbers. We handle the rest.</p>
+                    
+                    <div class="step-line"></div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="step-card" data-scroll-reveal data-delay="0.2" data-tilt>
+                    <div class="step-number" data-float>
+                        <span>2</span>
+                        <div class="number-ring"></div>
+                    </div>
+                    
+                    <div class="step-icon">
+                        <i class="bi bi-rocket-takeoff-fill"></i>
+                        <div class="icon-orbit"></div>
+                    </div>
+                    
+                    <h3 class="step-title">Your AI Goes Live (24/7)</h3>
+                    <p class="step-desc">Customers text. AI books. Staff gets alerts. Payments happen automatically.</p>
+                    
+                    <div class="step-line"></div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="step-card" data-scroll-reveal data-delay="0.4" data-tilt>
+                    <div class="step-number" data-float>
+                        <span>3</span>
+                        <div class="number-ring"></div>
+                    </div>
+                    
+                    <div class="step-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                        <div class="icon-orbit"></div>
+                    </div>
+                    
+                    <h3 class="step-title">You Watch Revenue Grow</h3>
+                    <p class="step-desc">Check your dashboard every Monday. See how many slots AI filled while you were off.</p>
+                    
+                    <div class="step-line"></div>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="section-cta" data-scroll-reveal data-delay="0.6">
+                <a href="#cta" class="btn btn-primary btn-large" data-magnetic data-ripple>
+                    <span class="btn-text">Start Free Trial</span>
+                    <span class="btn-icon"><i class="bi bi-arrow-right"></i></span>
+                    <span class="btn-shine"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         PRICING SECTION
+    ======================================== -->
+    <section class="pricing-section section-light" id="pricing">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header" data-scroll-reveal>
+                <h2 class="section-title display-font">
+                    <span class="title-word">Cheaper</span>
+                    <span class="title-word">Than</span>
+                    <span class="title-word">Hiring</span>
+                    <span class="title-word">a</span>
+                    <span class="title-word gradient-text">Receptionist</span>
+                </h2>
+                <p class="section-subtitle">
+                    A receptionist costs ₹15,000/month. Our AI works 24/7 for less.
+                </p>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="pricing-grid">
+                <!-- Starter Plan -->
+                <div class="pricing-card" data-scroll-reveal data-tilt>
+                    <div class="card-glow"></div>
+                    
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Starter</h3>
+                        <div class="pricing-icon">
+                            <i class="bi bi-lightning"></i>
+                        </div>
+                    </div>
+
+                    <div class="pricing-price">
+                        <span class="price-currency">₹</span>
+                        <span class="price-amount">1,499</span>
+                        <span class="price-period">/month</span>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>AI booking bot (WhatsApp/Telegram)</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Staff alerts</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Payment links (Razorpay/UPI)</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Basic reminders</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>1 location</span>
+                        </li>
+                    </ul>
+
+                    <div class="pricing-badge">Best for: Small salons</div>
+
+                    <a href="#cta" class="btn btn-secondary" data-magnetic data-ripple>
+                        <span class="btn-text">Get Started</span>
+                        <span class="btn-shine"></span>
+                    </a>
+                </div>
+
+                <!-- Growth Plan (Featured) -->
+                <div class="pricing-card pricing-featured" data-scroll-reveal data-delay="0.2" data-tilt>
+                    <div class="featured-badge">
+                        <i class="bi bi-star-fill"></i>
+                        <span>Most Popular</span>
+                    </div>
+                    <div class="card-glow"></div>
+                    <div class="featured-shine"></div>
+
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Growth</h3>
+                        <div class="pricing-icon">
+                            <i class="bi bi-rocket-takeoff"></i>
+                        </div>
+                    </div>
+
+                    <div class="pricing-price">
+                        <span class="price-currency">₹</span>
+                        <span class="price-amount">2,999</span>
+                        <span class="price-period">/month</span>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Everything in Starter</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Owner dashboard</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Analytics & reports</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Client history</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Review management</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Up to 3 locations</span>
+                        </li>
+                    </ul>
+
+                    <div class="pricing-badge">Best for: Growing clinics</div>
+
+                    <a href="#cta" class="btn btn-primary" data-magnetic data-ripple>
+                        <span class="btn-text">Get Started</span>
+                        <span class="btn-icon"><i class="bi bi-arrow-right"></i></span>
+                        <span class="btn-shine"></span>
+                    </a>
+                </div>
+
+                <!-- Revenue Plan -->
+                <div class="pricing-card" data-scroll-reveal data-delay="0.4" data-tilt>
+                    <div class="card-glow"></div>
+
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Revenue</h3>
+                        <div class="pricing-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                    </div>
+
+                    <div class="pricing-price">
+                        <span class="price-currency">₹</span>
+                        <span class="price-amount">1,999</span>
+                        <span class="price-period">/month</span>
+                    </div>
+
+                    <div class="pricing-extra">+ 8% of AI-generated bookings</div>
+
+                    <ul class="pricing-features">
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Everything in Growth</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span><strong>Proactive slot-filling AI</strong></span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Smart customer targeting</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Dynamic pricing suggestions</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Priority support</span>
+                        </li>
+                        <li data-feature-reveal>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Unlimited locations</span>
+                        </li>
+                    </ul>
+
+                    <div class="pricing-badge">Best for: Premium salons</div>
+
+                    <a href="#cta" class="btn btn-secondary" data-magnetic data-ripple>
+                        <span class="btn-text">Get Started</span>
+                        <span class="btn-shine"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pricing Note -->
+            <div class="pricing-note" data-scroll-reveal data-delay="0.6">
+                <div class="note-icon">💡</div>
+                <p><strong>Revenue Plan Example:</strong> If we fill 15 slots/month (₹30,000 revenue), you pay us ₹2,400 extra. But you made ₹30,000 you would've lost. That's <strong>₹27,600 profit</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FAQ SECTION
+    ======================================== -->
+    <section class="faq-section section-dark">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header" data-scroll-reveal>
+                <h2 class="section-title display-font">
+                    <span class="title-word">Common</span>
+                    <span class="title-word gradient-text">Questions</span>
+                </h2>
+            </div>
+
+            <!-- FAQ Grid -->
+            <div class="faq-grid">
+                <div class="faq-item" data-scroll-reveal data-tilt>
+                    <div class="faq-icon">
+                        <i class="bi bi-question-circle"></i>
+                    </div>
+                    <h3 class="faq-question">Will my customers accept a bot?</h3>
+                    <p class="faq-answer">Your customers already chat with bots on Zomato and Swiggy. Ours speaks Malayalam and sounds human. Most customers don't even realize it's AI.</p>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="faq-item" data-scroll-reveal data-delay="0.1" data-tilt>
+                    <div class="faq-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                    <h3 class="faq-question">What if the AI makes a mistake?</h3>
+                    <p class="faq-answer">Every booking is confirmed by your staff via WhatsApp. You have full control. The AI suggests, you approve.</p>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="faq-item" data-scroll-reveal data-delay="0.2" data-tilt>
+                    <div class="faq-icon">
+                        <i class="bi bi-gear"></i>
+                    </div>
+                    <h3 class="faq-question">I'm not tech-savvy. Is this complicated?</h3>
+                    <p class="faq-answer">If you can use WhatsApp, you can use REVOLQ. We set up everything for you in 1 day. No coding required.</p>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="faq-item" data-scroll-reveal data-delay="0.3" data-tilt>
+                    <div class="faq-icon">
+                        <i class="bi bi-link-45deg"></i>
+                    </div>
+                    <h3 class="faq-question">Does it work with my existing systems?</h3>
+                    <p class="faq-answer">Yes. We integrate with Google Calendar, Razorpay, WhatsApp, Instagram, and Telegram. Your staff doesn't need to learn new tools.</p>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="faq-item" data-scroll-reveal data-delay="0.4" data-tilt>
+                    <div class="faq-icon">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <h3 class="faq-question">What happens after the free trial?</h3>
+                    <p class="faq-answer">After 14 days, choose a plan or cancel. No contract. No hidden fees. Cancel anytime.</p>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="faq-item" data-scroll-reveal data-delay="0.5" data-tilt>
+                    <div class="faq-icon">
+                        <i class="bi bi-palette"></i>
+                    </div>
+                    <h3 class="faq-question">Can I customize the messages?</h3>
+                    <p class="faq-answer">Absolutely. You control the tone, language (English/Malayalam/Hindi), and message templates. Your brand, your voice.</p>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FINAL CTA (FORM SECTION)
+    ======================================== -->
+    <section class="final-cta" id="cta">
+        <!-- Animated Background -->
+        <div class="cta-bg">
+            <canvas id="ctaCanvas"></canvas>
+            <div class="cta-gradient"></div>
+            <div class="cta-orbs">
+                <div class="cta-orb"></div>
+                <div class="cta-orb"></div>
+                <div class="cta-orb"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="cta-content" data-scroll-reveal>
+                <!-- Header -->
+                <div class="cta-header">
+                    <h2 class="cta-title display-font">
+                        <span class="title-word">Start</span>
+                        <span class="title-word">Filling</span>
+                        <span class="title-word">Empty</span>
+                        <span class="title-word">Slots</span>
+                        <span class="title-word gradient-text">This</span>
+                        <span class="title-word gradient-text">Week</span>
+                    </h2>
+                    <p class="cta-subtitle">
+                        Join 12 Kerala businesses already using REVOLQ.<br>
+                        <strong>Free for 14 days.</strong> No credit card. Cancel anytime.
+                    </p>
+                </div>
+
+                <!-- Form -->
+                <form class="cta-form" id="ctaForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required data-input-animate>
+                            <div class="input-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email Address" required data-input-animate>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="WhatsApp Number" required data-input-animate>
+                            <div class="input-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="business" placeholder="Business Name" required data-input-animate>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <select name="type" required data-input-animate>
+                                <option value="">Business Type</option>
+                                <option value="salon">Salon</option>
+                                <option value="clinic">Clinic/Hospital</option>
+                                <option value="spa">Spa/Wellness</option>
+                                <option value="institute">Educational Institute</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="input-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Create Password (min 8 characters)" required minlength="8" data-input-animate>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large btn-submit" data-magnetic data-ripple>
+                        <span class="btn-text">Start Free Trial</span>
+                        <span class="btn-icon"><i class="bi bi-arrow-right"></i></span>
+                        <span class="btn-shine"></span>
+                    </button>
+                </form>
+
+                <!-- Trust Badge -->
+                <div class="cta-trust" data-scroll-reveal data-delay="0.2">
+                    <i class="bi bi-shield-check"></i>
+                    <span>Built in Kerala, for Kerala businesses. Malayalam + UPI supported.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <div class="footer-grid-lines"></div>
+        </div>
+
+        <div class="container">
+            <div class="footer-content">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <span class="logo-icon"><i class="bi bi-lightning-charge-fill"></i></span>
+                        <span class="logo-text">REVOLQ</span>
+                    </a>
+                    <p class="footer-desc">AI-powered automation for service businesses.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link" data-magnetic>
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" data-magnetic>
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" data-magnetic>
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" data-magnetic>
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product Links -->
+                <div class="footer-links">
+                    <h4 class="footer-title">Product</h4>
+                    <a href="#how-it-works" class="footer-link">How It Works</a>
+                    <a href="#pricing" class="footer-link">Pricing</a>
+                    <a href="#results" class="footer-link">Case Studies</a>
+                    <a href="#" class="footer-link">Features</a>
+                </div>
+
+                <!-- Company Links -->
+                <div class="footer-links">
+                    <h4 class="footer-title">Company</h4>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Contact</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-links">
+                    <h4 class="footer-title">Contact</h4>
+                    <div class="footer-contact">
+                        <i class="bi bi-envelope"></i>
+                        <a href="mailto:hello@revolq.in">hello@revolq.in</a>
+                    </div>
+                    <div class="footer-contact">
+                        <i class="bi bi-phone"></i>
+                        <a href="tel:+917995617374">+91 7995617374</a>
+                    </div>
+                    <div class="footer-contact">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>Kochi, Kerala</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 REVOLQ. All rights reserved.</p>
+                <div class="footer-badge">
+                    Made with <i class="bi bi-heart-fill"></i> in Kerala
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================
+         FLOATING ACTION BUTTON (BACK TO TOP)
+    ======================================== -->
+    <button class="back-to-top" id="backToTop" data-magnetic>
+        <i class="bi bi-arrow-up"></i>
+        <div class="btn-ripple"></div>
+    </button>
+
+    <!-- ========================================
+         SCRIPTS
+    ======================================== -->
+    <script src="genai.js"></script>
+</body>
+</html>
